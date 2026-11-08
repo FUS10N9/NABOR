@@ -445,7 +445,9 @@ api.post('/payments/verify/razorpay', writeLimiter, asRoute(async (req, res) => 
     paymentId: z.string().min(4),
     signature: z.string().min(8),
   }).parse(req.body)
-  res.json(await verifyRazorpayPayment(auth.user, body))
+  const { orderId, paymentId, signature } = body
+  if (!orderId || !paymentId || !signature) throw new HttpError(400, 'Invalid payment verification details')
+  res.json(await verifyRazorpayPayment(auth.user, { orderId, paymentId, signature }))
 }))
 
 api.get('/admin/overview', asRoute(async (req, res) => {

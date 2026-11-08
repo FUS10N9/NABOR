@@ -102,8 +102,8 @@ Nabor does not hold a balance and does not claim escrow.
 
 ## Deployment
 
-- Web: Vercel, with the project root set to the repository root, install command `npm run setup`, build command `npm run build --prefix client`, and output directory `client/dist`. The repository root is required because the client imports code from `shared/`. Set `VITE_API_URL` to the API origin.
-- API: Render, using `render.yaml`. Set `CLIENT_ORIGIN` to the Vercel URL.
+- Web and API: Vercel, with the project root set to the repository root, install command `npm run setup`, build command `npm run build --prefix client`, and output directory `client/dist`. The repository root is required because the client imports code from `shared/`. The Express API is served by a Vercel Function at `/api/*`. Configure `VITE_SUPABASE_URL`, `VITE_SUPABASE_PUBLISHABLE_KEY`, `VITE_MAPBOX_ACCESS_TOKEN`, `SUPABASE_URL`, `SUPABASE_PUBLISHABLE_KEY`, `SUPABASE_SECRET_KEY`, and `CLIENT_ORIGIN` in the Vercel project. Leave `VITE_API_URL` empty when using the same Vercel project for the API.
+- Optional separate API: Render, using `render.yaml`. Set `CLIENT_ORIGIN` to the Vercel URL and `VITE_API_URL` to the API origin.
 - Database and auth: the same Supabase project. Run the migrations there before inviting people.
 
 ## Checks
