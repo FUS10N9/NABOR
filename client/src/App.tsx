@@ -13,7 +13,7 @@ import { NotificationsPage } from '@/pages/NotificationsPage'
 import { AgeGate, OnboardingPage, SuspendedPage } from '@/pages/OnboardingPage'
 import { PostTaskPage } from '@/pages/PostTaskPage'
 import { ProfilePage } from '@/pages/ProfilePage'
-import { ForgotPage, LandingPage, LoginPage, ResetPage, SignupPage } from '@/pages/PublicPages'
+import { EmailConfirmationPage, ForgotPage, LandingPage, LoginPage, ResetPage, SignupPage } from '@/pages/PublicPages'
 import { SettingsPage } from '@/pages/SettingsPage'
 import { ApplicationsPage, TaskDetailPage } from '@/pages/TaskPages'
 
@@ -34,6 +34,7 @@ export default function App() {
       <Route path="/signup" element={<SignupPage />} />
       <Route path="/forgot-password" element={<ForgotPage />} />
       <Route path="/reset-password" element={<ResetPage />} />
+      <Route path="/auth/callback" element={<EmailConfirmationPage />} />
       <Route element={<RequireAuth />}>
         <Route path="/onboarding" element={<OnboardingPage />} />
         <Route element={<RequireReady />}>

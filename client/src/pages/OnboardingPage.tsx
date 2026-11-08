@@ -77,7 +77,7 @@ export function OnboardingPage() {
         <form className="mt-6 space-y-4" onSubmit={form.handleSubmit((values) => save.mutate(values))}>
           <Field label="Full name" error={form.formState.errors.full_name?.message}><Input {...form.register('full_name')} /></Field>
           <Field label="Username" error={form.formState.errors.username?.message}><Input {...form.register('username')} /></Field>
-          <Field label="Date of birth" error={form.formState.errors.date_of_birth?.message}><Input type="date" {...form.register('date_of_birth')} /></Field>
+          <Field label="Date of birth" hint="Type your date as YYYY-MM-DD." error={form.formState.errors.date_of_birth?.message}><Input type="text" inputMode="text" placeholder="YYYY-MM-DD" autoComplete="bday" {...form.register('date_of_birth')} /></Field>
           <Field label="Short introduction"><Textarea {...form.register('bio')} placeholder="What should neighbours know about you?" /></Field>
           <Field label="Services you can offer"><Textarea {...form.register('services_offered')} placeholder="Tutoring, grocery runs, dog walking…" /></Field>
           <Field label="Skills" hint="Separate them with commas, up to 12."><Input {...form.register('skills')} placeholder="maths, cooking, excel" /></Field>

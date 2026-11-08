@@ -112,12 +112,12 @@ export function SignupPage() {
           password: values.password,
           options: {
             data: { full_name: values.full_name },
-            emailRedirectTo: `${window.location.origin}/home`,
+            emailRedirectTo: `${window.location.origin}/auth/callback`,
           },
         })
         if (signUpError) setError(signUpError.message)
         else if (data.session) window.location.assign('/onboarding')
-        else setMessage('Check your email and confirm the address before logging in.')
+        else setMessage('Check your email to confirm your address. You will be signed in automatically after confirmation.')
       })}>
         <Field label="Full name" error={form.formState.errors.full_name?.message}><Input {...form.register('full_name')} /></Field>
         <Field label="Email" error={form.formState.errors.email?.message}><Input type="email" {...form.register('email')} /></Field>
@@ -127,6 +127,22 @@ export function SignupPage() {
         <Button type="submit" className="w-full" disabled={form.formState.isSubmitting}>Create account</Button>
       </form>
       <p className="mt-4 text-sm text-mute">Already have an account? <Link to="/login" className="text-pine-800">Log in</Link></p>
+    </AuthFrame>
+  )
+}
+
+export function EmailConfirmationPage() {
+  const { loading, session } = useAuth()
+  if (loading) {
+    return <AuthFrame title="Confirming your email" subtitle="Please wait while we finish signing you in."><p className="text-sm text-mute">This should only take a moment.</p></AuthFrame>
+  }
+  if (session) return <Navigate to="/onboarding" replace />
+  return (
+    <AuthFrame title="Email confirmation failed" subtitle="This confirmation link may have expired or already been used. Try creating your account again or log in if you have already confirmed your email.">
+      <div className="flex gap-3">
+        <Link to="/signup" className="rounded-full bg-pine-600 px-4 py-2.5 text-sm font-medium text-white">Create account</Link>
+        <Link to="/login" className="rounded-full border border-line bg-white px-4 py-2.5 text-sm font-medium">Log in</Link>
+      </div>
     </AuthFrame>
   )
 }

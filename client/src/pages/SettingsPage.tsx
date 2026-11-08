@@ -80,7 +80,7 @@ export function SettingsPage() {
           {avatar ? <img src={avatar} alt="" className="h-16 w-16 rounded-full object-cover" /> : null}
           <Field label="Full name" error={form.formState.errors.full_name?.message}><Input {...form.register('full_name')} /></Field>
           <Field label="Username" error={form.formState.errors.username?.message}><Input {...form.register('username')} /></Field>
-          <Field label="Date of birth"><Input type="date" {...form.register('date_of_birth')} /></Field>
+          <Field label="Date of birth" hint="Type your date as YYYY-MM-DD."><Input type="text" inputMode="text" placeholder="YYYY-MM-DD" autoComplete="bday" {...form.register('date_of_birth')} /></Field>
           <Field label="Introduction"><Textarea {...form.register('bio')} /></Field>
           <Field label="Services offered"><Textarea {...form.register('services_offered')} /></Field>
           <Field label="Skills"><Input {...form.register('skills')} /></Field>

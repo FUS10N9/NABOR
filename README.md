@@ -40,6 +40,7 @@ supabase/migrations/    Schema, functions, RLS, storage, realtime
    - `supabase/migrations/20261106120200_marketplace.sql`
    - `supabase/migrations/20261106120300_social.sql`
    - `supabase/migrations/20261106120400_policies.sql`
+   - `supabase/migrations/20261108174500_backfill_existing_users.sql`
 3. In Supabase Auth, set the site URL to `http://localhost:5173` and add `http://localhost:5173/**` to the redirect URLs.
 4. Install and start both processes:
 

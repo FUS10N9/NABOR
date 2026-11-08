@@ -1,5 +1,5 @@
 import { useQuery, useQueryClient } from '@tanstack/react-query'
-import { Bell, Compass, House, MessageCircle, Plus, SquareUser } from 'lucide-react'
+import { Activity, Bell, Compass, House, MessageCircle, Plus, UserRound } from 'lucide-react'
 import { useEffect } from 'react'
 import { Link, NavLink, Outlet, useNavigate } from 'react-router-dom'
 import { useAuth } from '@/context/AuthContext'
@@ -12,7 +12,8 @@ const items = [
   { to: '/explore', label: 'Explore', icon: Compass },
   { to: '/tasks/new', label: 'Post', icon: Plus },
   { to: '/messages', label: 'Messages', icon: MessageCircle },
-  { to: '/activities', label: 'Activity', icon: SquareUser },
+  { to: '/activities', label: 'Activity', icon: Activity },
+  { to: '/profile', label: 'My Account', icon: UserRound },
 ]
 
 export function AppShell() {
@@ -75,7 +76,7 @@ export function AppShell() {
           <Outlet />
         </main>
       </div>
-      <nav className="fixed inset-x-0 bottom-0 z-30 grid grid-cols-5 border-t border-line bg-white px-2 py-2 md:hidden">
+      <nav className="fixed inset-x-0 bottom-0 z-30 grid grid-cols-6 border-t border-line bg-white px-1 py-2 md:hidden">
         {items.map((item) => (
           <NavLink key={item.to} to={item.to} className={({ isActive }) => cn('flex flex-col items-center gap-1 rounded-2xl py-1 text-[11px]', isActive ? 'text-pine-700' : 'text-mute')}>
             <item.icon className={cn('h-5 w-5', item.to === '/tasks/new' && 'rounded-full bg-pine-600 p-1 text-white')} />
