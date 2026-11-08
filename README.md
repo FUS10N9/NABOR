@@ -102,7 +102,7 @@ Nabor does not hold a balance and does not claim escrow.
 
 ## Deployment
 
-- Web: Vercel, with the project root set to `client`, build command `npm run build`, and output directory `dist`. Do not use `vite build` as the build command; Vite is installed as a project-local dependency and is resolved by the npm script. Set `VITE_API_URL` to the API origin.
+- Web: Vercel, with the project root set to the repository root, install command `npm run setup`, build command `npm run build --prefix client`, and output directory `client/dist`. The repository root is required because the client imports code from `shared/`. Set `VITE_API_URL` to the API origin.
 - API: Render, using `render.yaml`. Set `CLIENT_ORIGIN` to the Vercel URL.
 - Database and auth: the same Supabase project. Run the migrations there before inviting people.
 
